@@ -48,3 +48,14 @@ class MultiHeadAttention(nn.modules):
         attn_output = self.scaled_dot_product_attention(Q, K, V, mask)
         output = self.W_o(self.combine_heads(attn_output))
         return output
+
+
+class PositionwiseFeedforward(nn.Module):
+    def __init__(self, d_model, d_ff):
+        super(PositionwiseFeedforward, self).__init__()
+        self.fc1 = nn.Linear(d_model, d_ff)
+        self.fc2 = nn.Linear(d_ff, d_model)
+        self.relu = nn.ReLU()
+
+    def forward(self, x):
+        return self.fc2(self.relu(self.fc1(x)))

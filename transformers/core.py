@@ -47,9 +47,9 @@ class MultiHeadAttention(nn.Module):
         return output
 
 
-class PositionwiseFeedforward(nn.Module):
+class PositionWiseFeedforward(nn.Module):
     def __init__(self, d_model, d_ff):
-        super(PositionwiseFeedforward, self).__init__()
+        super(PositionWiseFeedforward, self).__init__()
         self.fc1 = nn.Linear(d_model, d_ff)
         self.fc2 = nn.Linear(d_ff, d_model)
         self.relu = nn.ReLU()

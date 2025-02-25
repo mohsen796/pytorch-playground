@@ -1,13 +1,13 @@
 import torch.nn as nn
 
-from transformers.core import MultiHeadAttention, PositionwiseFeedforward
+from transformers.core import MultiHeadAttention, PositionWiseFeedforward
 
 
 class EncoderLayer(nn.Module):
     def __init__(self, d_model, num_heads, d_ff, dropout):
         super(EncoderLayer, self).__init__()
         self.self_attn = MultiHeadAttention(d_model, num_heads)
-        self.feed_forward = PositionwiseFeedforward(d_model, d_ff)
+        self.feed_forward = PositionWiseFeedforward(d_model, d_ff)
         self.norm1 = nn.LayerNorm(d_model)
         self.norm2 = nn.LayerNorm(d_model)
         self.dropout = nn.Dropout(dropout)
